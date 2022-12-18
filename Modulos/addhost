@@ -25,7 +25,7 @@ else
 		else
 			if [[ $host != \.* ]]
 			then
-				tput setaf 7 ; tput setab 4 ; tput bold ; echo "" ; echo "You must add a domain by starting it with a dot!" ; echo "For example: .phreaker56.xyz" ; echo "Não é necessário adicionar subdomínios para domínios que já estão no arquivo" ; echo "Ou seja, não é necessário adicionar recargawap.claro.com.br" ; echo "se o domínio .claro.com.br já estiver no arquivo." ; echo ""; tput sgr0
+				tput setaf 7 ; tput setab 4 ; tput bold ; echo "" ; echo "You must add a domain by starting it with a dot!" ; echo "For example: .phreaker56.xyz" ; echo "No need to add subdomains for domains already on file" ; echo "That is, it is not necessary to add rechargewap.claro.com.br" ; echo "if the domain .claro.com.br is already in the file." ; echo ""; tput sgr0
 				exit 1
 			else
 				echo "$host" >> $payload && grep -v "^$" $payload > /tmp/a && mv /tmp/a $payload
@@ -37,7 +37,7 @@ else
 				elif [ ! -f "/etc/init.d/squid" ]
 				then
 					service squid reload
-				fi	
+				fi
 				tput setaf 7 ; tput setab 1 ; tput bold ; echo "" ; echo "Proxy Squid Proxy has been reloaded successfully!" ; echo "" ; tput sgr0
 				exit 1
 			fi
