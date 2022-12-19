@@ -57,7 +57,7 @@ fun_badvpn() {
                     sleep 0.1
                 } || {
                     cd $HOME
-                    wget https://github.com/tblesshack/SSH-GUI/blob/master/badvpn-udpgw -o /dev/null
+                    wget https://raw.githubusercontent.com/tblesshack/SSHPlus/master/badvpn-udpgw -o /dev/null
                     mv -f $HOME/badvpn-udpgw /bin/badvpn-udpgw
                     chmod 777 /bin/badvpn-udpgw
                 }
