@@ -17,7 +17,7 @@ COR = '<font color="null">'
 FTAG = '</font>'
 DEFAULT_HOST = '0.0.0.0:22'
 RESPONSE = "HTTP/1.1 200 " + str(COR) + str(MSG) + str(FTAG) + "\r\n\r\n"
- 
+
 class Server(threading.Thread):
     def __init__(self, host, port):
         threading.Thread.__init__(self)
@@ -35,22 +35,22 @@ class Server(threading.Thread):
         self.soc.listen(0)
         self.running = True
 
-        try:                    
+        try:
             while self.running:
                 try:
                     c, addr = self.soc.accept()
                     c.setblocking(1)
                 except socket.timeout:
                     continue
-                
+
                 conn = ConnectionHandler(c, self, addr)
                 conn.start();
                 self.addConn(conn)
         finally:
             self.running = False
             self.soc.close()
-            
-	
+
+
     def addConn(self, conn):
         try:
             self.threadsLock.acquire()
@@ -58,25 +58,25 @@ class Server(threading.Thread):
                 self.threads.append(conn)
         finally:
             self.threadsLock.release()
-                    
+
     def removeConn(self, conn):
         try:
             self.threadsLock.acquire()
             self.threads.remove(conn)
         finally:
             self.threadsLock.release()
-                
+
     def close(self):
         try:
             self.running = False
             self.threadsLock.acquire()
-            
+
             threads = list(self.threads)
             for c in threads:
                 c.close()
         finally:
             self.threadsLock.release()
-			
+
 
 class ConnectionHandler(threading.Thread):
     def __init__(self, socClient, server, addr):
@@ -96,7 +96,7 @@ class ConnectionHandler(threading.Thread):
             pass
         finally:
             self.clientClosed = True
-            
+
         try:
             if not self.targetClosed:
                 self.target.shutdown(socket.SHUT_RDWR)
@@ -109,9 +109,9 @@ class ConnectionHandler(threading.Thread):
     def run(self):
         try:
             self.client_buffer = self.client.recv(BUFLEN)
-        
+
             hostPort = self.findHeader(self.client_buffer, 'X-Real-Host')
-            
+
             if hostPort == '':
                 hostPort = DEFAULT_HOST
 
@@ -119,10 +119,10 @@ class ConnectionHandler(threading.Thread):
 
             if split != '':
                 self.client.recv(BUFLEN)
-            
+
             if hostPort != '':
                 passwd = self.findHeader(self.client_buffer, 'X-Pass')
-				
+
                 if len(PASS) != 0 and passwd == PASS:
                     self.method_CONNECT(hostPort)
                 elif len(PASS) != 0 and passwd != PASS:
@@ -143,7 +143,7 @@ class ConnectionHandler(threading.Thread):
 
     def findHeader(self, head, header):
         aux = head.find(header + ': ')
-    
+
         if aux == -1:
             return ''
 
@@ -178,7 +178,7 @@ class ConnectionHandler(threading.Thread):
         self.client.sendall(RESPONSE)
         self.client_buffer = ''
         self.doCONNECT()
-                    
+
     def doCONNECT(self):
         socs = [self.client, self.target]
         count = 0
@@ -217,7 +217,7 @@ class ConnectionHandler(threading.Thread):
 def main(host=IP, port=PORT):
     print "\033[0;34m━"*8,"\033[1;32m PROXY SOCKS","\033[0;34m━"*8,"\n"
     print "\033[1;33mIP:\033[1;32m " + IP
-    print "\033[1;33mPORTA:\033[1;32m " + str(PORT) + "\n"
+    print "\033[1;33mPORT:\033[1;32m " + str(PORT) + "\n"
     print "\033[0;34m━"*10,"\033[1;32m SSHPLUS","\033[0;34m━\033[1;37m"*11,"\n"
     server = Server(IP, PORT)
     server.start()
@@ -225,7 +225,7 @@ def main(host=IP, port=PORT):
         try:
             time.sleep(2)
         except KeyboardInterrupt:
-            print '\nParando...'
+            print '\nStopping...'
             server.close()
             break
 if __name__ == '__main__':
