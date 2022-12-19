@@ -24,7 +24,7 @@ else
     hoje="$(date -d today +"%Y%m%d")"
     if [ $hoje -ge $databr ]
     then
-    data="\033[1;31mVenceu\033[0m"
+    data="\033[1;31mDONE\033[0m"
     else
     dat="$(date -d"$datauser" '+%Y-%m-%d')"
     data=$(echo -e "$((($(date -ud $dat +%s)-$(date -ud $(date +%Y-%m-%d) +%s))/86400)) \033[1;37mDias\033[0m")

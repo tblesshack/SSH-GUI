@@ -20,7 +20,7 @@ else
 			limit='1'
 		fi
 		l_user=$(echo -e "\033[1;31m[\033[1;36m$i\033[1;31m] \033[1;37m- \033[1;32m$_user\033[0m")
-        lim=$(echo -e "\033[1;33mLimite\033[1;37m: $limit")
+        lim=$(echo -e "\033[1;33mLimit\033[1;37m: $limit")
         printf '%-65s%s\n' "$l_user" "$lim"
 		_userPass+="\n${_oP}:${_user}"
 	done <<< "${_userT}"

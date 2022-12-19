@@ -9,7 +9,7 @@ then
 	echo "To run, create a screen session"
 	echo "And run the command:"
 	echo ""
-	echo "badudp"
+	echo "BADUDP"
 	echo ""
 	echo "And leave the screen session running in the background."
 	echo "" ; tput sgr0

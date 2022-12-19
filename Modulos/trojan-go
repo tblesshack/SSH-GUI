@@ -258,10 +258,10 @@ service_status_check() {
     else
         echo -e "${Error} ${RedBG} Detected that service $1 is not started and is trying to start... ${Font}"
         systemctl restart "$1" && systemctl enable "$1"
-        judge "Tente começar $1 "
+        judge "try to start $1 "
         sleep 5
         if systemctl is-active "$1" &>/dev/null; then
-            echo -e "${OK} ${GreenBG} $1 Começou ${Font}"
+            echo -e "${OK} ${GreenBG} $1 STARTED ${Font}"
         else
             echo -e "${WARN} ${Yellow} Try to reinstall and repair $1 and try again ${Font}"
             exit 4
@@ -486,7 +486,7 @@ EOF
             [[ -z ${alterID} ]] && alterID="10"
             jq '.inbounds += [{"sniffing":{"enabled":true,"destOverride":["http","tls"]},"port":'${v2wsport}',"listen":"127.0.0.1","tag":"vmess-ws-in","protocol":"vmess","settings":{"clients":[{"id":"'"${UUID}"'","alterId":'${alterID}'}]},"streamSettings":{"network":"ws","wsSettings":{"acceptProxyProtocol":true,"path":"'"${v2wspath}"'"}}}]' ${v2ray_conf} | sponge ${v2ray_conf} &&
                 jq '.routing.rules[2].inboundTag += ["vmess-ws-in"]' ${v2ray_conf} | sponge ${v2ray_conf}
-            judge "Geração de configuração V2Ray VMess WS"
+            judge "V2Ray VMess WS configuration generation"
         fi
         if [[ "${v2ray_ws_mode}" = "vless" ]]; then
             jq '.inbounds += [{"sniffing":{"enabled":true,"destOverride":["http","tls"]},"port":'${v2wsport}',"listen":"127.0.0.1","tag":"vless-ws-in","protocol":"vless","settings":{"clients":[{"id":"'"${UUID}"'","level":0}],"decryption":"none"},"streamSettings":{"network":"ws","wsSettings":{"acceptProxyProtocol":true,"path":"'"${v2wspath}"'"}}}]' ${v2ray_conf} | sponge ${v2ray_conf} &&
@@ -1000,15 +1000,15 @@ info_config() {
         [[ $trojan_tcp_mode = true ]] && echo -e "TCP Trojan-Go Download Port: $trojan_tcp_port" && echo -e "Porta de escuta Trojan-Go: $tjport"
         [[ $trojan_ws_mode = true ]] && echo -e "Trojan-Go WebSocket Touch Port: $trojan_ws_port" &&
             echo -e "Trojan-Go WebSocket Download Path: $trojan_ws_path"
-        [[ $v2ray_tcp_mode = v*ess ]] && echo -e "TCP V2Ray shunt port: $v2ray_tcp_port" && echo -e "Porta de escuta V2Ray TCP: $v2port"
-        [[ $v2ray_ws_mode = v*ess ]] && echo -e "V2Ray WebSocket Bypass Port: $v2ray_ws_port" && echo -e "Porta de escuta V2Ray WS: $v2wsport" &&
+        [[ $v2ray_tcp_mode = v*ess ]] && echo -e "TCP V2Ray shunt port: $v2ray_tcp_port" && echo -e "V2Ray TCP listening port: $v2port"
+        [[ $v2ray_ws_mode = v*ess ]] && echo -e "V2Ray WebSocket Bypass Port: $v2ray_ws_port" && echo -e "V2Ray WS listening port: $v2wsport" &&
             echo -e "V2Ray WebSocket shunt path: $v2ray_ws_path"
     fi
 
     if [[ -f ${trojan_conf} && $trojan_stat = "installed" ]]; then
         echo -e "—————————————————— Trojan-Go deployment——————————————————" &&
             echo -e "$(docker exec Trojan-Go sh -c 'trojan-go --version' 2>&1 | awk 'NR==1{gsub(/"/,"");print}')" &&
-            echo -e "Porta do servidor: ${TSP_Port}" && echo -e "Server address:: ${TSP_Domain}"
+            echo -e "Server port: ${TSP_Port}" && echo -e "Server address:: ${TSP_Domain}"
         [[ $trojan_tcp_mode = true ]] && echo -e "Trojan-Go Password: ${tjpassword}"
         [[ $trojan_ws_mode = true ]] &&
             echo -e "Trojan-Go WebSocket Path: ${tjwspath}" && echo -e "Trojan-Go WebSocket Host: ${tjwshost}"
