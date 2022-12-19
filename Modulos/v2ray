@@ -189,7 +189,7 @@ updateProject() {
         source /usr/share/bash-completion/completions/v2ray
         source /usr/share/bash-completion/completions/xray
     fi
-    
+
     #安装V2ray主程序
     [[ ${INSTALL_WAY} == 0 ]] && bash <(curl -L -s https://multi.netlify.app/go.sh)
 }
@@ -204,7 +204,7 @@ timeSync() {
             chronyc -a makestep
         fi
 
-        if [[ $? -eq 0 ]];then 
+        if [[ $? -eq 0 ]];then
             echo -e "${OK} Time Sync Success ${Font}"
             echo -e "${OK} now: `date -R`${Font}"
         fi
@@ -235,10 +235,10 @@ installFinish() {
     if [[ ${INSTALL_WAY} == 0 ]]; then
         clear
 
-        echo -e "\n\033[1;32mV2RAY INSTALADO COM SUCESSO !\033[0m"
+        echo -e "\n\033[1;32mV2RAY INSTALLED SUCCESSFULLY !\033[0m"
         v2ray info
 
-        echo -e "Por favor insira o comando 'v2ray' para gerenciar v2ray\n"
+        echo -e "Please input 'v2ray' command to manage v2ray\n"
     fi
 }
 
