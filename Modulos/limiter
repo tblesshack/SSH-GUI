@@ -33,7 +33,7 @@ fun_multilogin() {
 	) &
 }
 while true; do
-    echo 'verificando...'
+    echo 'verifiying...'
 	fun_multilogin > /dev/null 2>&1
 	sleep 15s
 done

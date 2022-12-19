@@ -32,8 +32,8 @@ else
 			elif [ ! -f "/etc/init.d/squid" ]
 			then
 				service squid reload
-			fi	
-			tput setaf 7 ; tput setab 1 ; tput bold ; echo "" ; echo "O Proxy Squid Proxy has been successfully reloaded!" ; echo "" ; tput sgr0
+			fi
+			tput setaf 7 ; tput setab 1 ; tput bold ; echo "" ; echo "The Proxy Squid Proxy has been successfully reloaded!" ; echo "" ; tput sgr0
 			exit 1
 		fi
 	fi
