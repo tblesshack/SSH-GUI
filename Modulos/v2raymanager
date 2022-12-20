@@ -274,7 +274,7 @@ msg17='\033[1;37m\033[1;33m(No Information - To Cancel Type CRTL + C)\033[1;31m'
     iptables -n -v -L > /etc/SSHPlus/v2ray/data1.log
     statsss=$(cat /etc/SSHPlus/v2ray/data1.log|grep -w "tcp spt:$hostreturn quota:"|cut -d' ' -f3,4,5)
     gblim=$(cat /etc/SSHPlus/v2ray/lisportt.log|grep -w "$hostreturn"|cut -d'|' -f2)
-    local contador_secuencial+="         \e[97mPUERTO: \e[93m$hostreturn \e[97m|\e[93m$statsss \e[97m|\e[93m $gblim GB  \n"
+    local contador_secuencial+="         \e[97mLIS PORTS: \e[93m$hostreturn \e[97m|\e[93m$statsss \e[97m|\e[93m $gblim GB  \n"
           if [[ $i -gt 30 ]]; then
     	      echo -e "$contador_secuencial"
     	  unset contador_secuencial

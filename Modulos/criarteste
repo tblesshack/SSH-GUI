@@ -5,7 +5,7 @@ mkdir /etc/SSHPlus/userteste
 fi
 tput setaf 7 ; tput setab 4 ; tput bold ; printf '%30s%s%-15s\n' "Create test user" ; tput sgr0
 echo ""
-[ "$(ls -A /etc/SSHPlus/userteste)" ] && echo -e "\033[1;32mActive Test!\033[1;37m" || echo -e "\033[1;31mNenhum test ativo!\033[0m"
+[ "$(ls -A /etc/SSHPlus/userteste)" ] && echo -e "\033[1;32mActive Test!\033[1;37m" || echo -e "\033[1;31mNo active test!\033[0m"
 echo ""
 for testeson in $(ls /etc/SSHPlus/userteste |sort |sed 's/.sh//g')
 do
@@ -60,13 +60,13 @@ exit" > /etc/SSHPlus/userteste/$nome.sh
 chmod +x /etc/SSHPlus/userteste/$nome.sh
 at -f /etc/SSHPlus/userteste/$nome.sh now + $u_temp min > /dev/null 2>&1
 clear
-echo -e "\E[44;1;37m     Usuario Teste Criado     \E[0m"
+echo -e "\E[44;1;37m     Test User Created     \E[0m"
 echo ""
 echo -e "\033[1;32mIP:\033[1;37m $IP"
 echo -e "\033[1;32mUser:\033[1;37m $nome"
 echo -e "\033[1;32mPassword:\033[1;37m $pass"
 echo -e "\033[1;32mLimit:\033[1;37m $limit"
-echo -e "\033[1;32mValidity:\033[1;37m $u_temp Minutos"
+echo -e "\033[1;32mValidity:\033[1;37m $u_temp Minutes"
 echo ""
 echo -e "\033[1;33mAfter the time defined by the user"
 echo -e "\033[1;32m$nome \033[1;33mwill be disconnected and deleted.\033[0m"

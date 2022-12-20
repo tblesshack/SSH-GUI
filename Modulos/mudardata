@@ -54,7 +54,7 @@ usuario=$(echo -e "${_userPass}" | grep -E "\b$option\b" | cut -d: -f2)
 if [[ -z $usuario ]]
 then
 	echo ""
-	tput setaf 7 ; tput setab 1 ; tput bold ; echo "Error, Empty or invalid usernameo!!! " ; tput sgr0
+	tput setaf 7 ; tput setab 1 ; tput bold ; echo "Error, Empty or invalid username!!! " ; tput sgr0
 	echo ""
 	exit 1
 else
