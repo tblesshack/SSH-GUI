@@ -13,6 +13,6 @@ wget https://raw.githubusercontent.com/tblesshack/SSHPlus/master/badvpn-udpgw-ar
 
 unzip badvpn-udpgw-arm.zip
 
-mv -f $HOME/arm/badvpn-udpgw /bin/badvpn-udpgw
+mv -f $HOME/badvpn-udpgw /bin/badvpn-udpgw
 
 chmod 777 /bin/badvpn-udpgw
