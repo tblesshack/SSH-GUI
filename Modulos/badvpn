@@ -4,7 +4,7 @@ fun_badvpn() {
     echo -e "\E[44;1;37m            MANAGE BADVPN             \E[0m"
     echo ""
     if ps x | grep -w udpvpn | grep -v grep 1>/dev/null 2>/dev/null; then
-        echo -e "\033[1;33mPORTAS\033[1;37m: \033[1;32m$(netstat -nplt | grep 'badvpn-ud' | awk {'print $4'} | cut -d: -f2 | xargs)"
+        echo -e "\033[1;33mPORTS\033[1;37m: \033[1;32m$(netstat -nplt | grep 'badvpn-ud' | awk {'print $4'} | cut -d: -f2 | xargs)"
     else
         sleep 0.1
     fi
