@@ -38,7 +38,7 @@ echo -e "\033[1;33mModel:\033[1;37m$modelo"
 echo -e "\033[1;33mNumber of Cpucores:\033[1;37m $cpucores"
 echo -e "\033[1;33mMemory Cache:\033[1;37m$cache"
 echo -e "\033[1;33mArchitecture: \033[1;37m$(uname -p)"
-echo -e "\033[1;33multilization: \033[37m$uso"
+echo -e "\033[1;33mInitilaization: \033[37m$uso"
 echo ""
 else
 echo -e "\033[1;32mPROCESSOR\033[0m"
