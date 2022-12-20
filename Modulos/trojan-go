@@ -52,8 +52,8 @@ Font="\033[0m"
 
 #Notification Information
 OK="${Green}[OK]${Font}"
-WARN="${Yellow}[警告]${Font}"
-Error="${Red}[错误]${Font}"
+WARN="${Yellow}[WARNING]${Font}"
+Error="${Red}[ERROR]${Font}"
 
 #版本、初始化变量
 shell_version="1.183"

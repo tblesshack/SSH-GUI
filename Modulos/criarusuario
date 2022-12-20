@@ -54,25 +54,25 @@ fun_geraovpn() {
     bypass="net_gateway"
     cert01="/etc/openvpn/client-common.txt"
     if [[ "$hst" == "$vivo1" ]]; then
-        Host="Portal Recarga"
+        Host="Recharge Portal"
     elif [[ "$hst" == "$vivo2" ]]; then
-        Host="Recarga contole"
+        Host="Recharge Contol"
     elif [[ "$hst" == "$vivo3" ]]; then
-        Host="Portal Navegue"
+        Host="Browse Portal"
     elif [[ "$hst" == "$vivo4" ]]; then
-        Host="Nav controle"
+        Host="Nav control"
     elif [[ "$hst" == "$IP:$_Port" ]]; then
         Host="Vivo MMS"
     elif [[ "$hst" == "$oi" ]]; then
-        Host="Oi"
+        Host="HI"
     elif [[ "$hst" == "$bypass" ]]; then
-        Host="Modo Bypass"
+        Host="Bypass Mode"
     elif [[ "$hedr" == "$payload1" ]]; then
         Host="OPEN SOCKS"
     elif [[ "$hedr" == "$payload2" ]]; then
         Host="OPEN SQUID"
     else
-        Host="Customizado"
+        Host="Customization"
     fi
 }
 fun_bar() {
@@ -85,7 +85,7 @@ fun_bar() {
         touch $HOME/fim
     ) >/dev/null 2>&1 &
     tput civis
-    echo -ne "\033[1;33mAGUARDE \033[1;37m- \033[1;33m["
+    echo -ne "\033[1;33mWAIT \033[1;37m- \033[1;33m["
     while true; do
         for ((i = 0; i < 18; i++)); do
             echo -ne "\033[1;31m#"
@@ -108,11 +108,11 @@ fun_edithost() {
     echo -e "\033[1;33mHOST EM USO\033[1;37m: \033[1;32m$Host"
     echo ""
     echo -e "\033[1;31m[\033[1;36m1\033[1;31m] \033[1;33mVIVO RECHARGE"
-    echo -e "\033[1;31m[\033[1;36m2\033[1;31m] \033[1;33mVIVO NAVEGUE PRE"
+    echo -e "\033[1;31m[\033[1;36m2\033[1;31m] \033[1;33mVIVO NAVIGATE PRE"
     echo -e "\033[1;31m[\033[1;36m3\033[1;31m] \033[1;33mOPEN SOCKS \033[1;31m[\033[1;32mAPP MOD\033[1;31m]"
     echo -e "\033[1;31m[\033[1;36m4\033[1;31m] \033[1;33mOPEN SQUID \033[1;31m[\033[1;32mAPP MOD\033[1;31m]"
     echo -e "\033[1;31m[\033[1;36m5\033[1;31m] \033[1;33mVIVO MMS \033[1;31m[\033[1;37mAPN: \033[1;32mmms.vivo.com.br\033[1;31m]"
-    echo -e "\033[1;31m[\033[1;36m6\033[1;31m] \033[1;33mMODO BYPASS \033[1;31m[\033[1;32mOPEN + INJECTOR\033[1;31m]"
+    echo -e "\033[1;31m[\033[1;36m6\033[1;31m] \033[1;33mBYPASS MODE \033[1;31m[\033[1;32mOPEN + INJECTOR\033[1;31m]"
     echo -e "\033[1;31m[\033[1;36m7\033[1;31m] \033[1;33mALL HOSTS \033[1;31m[\033[1;32m1 OF EACH OVPN\033[1;31m]"
     echo -e "\033[1;31m[\033[1;36m8\033[1;31m] \033[1;33mEDIT MANUALLY"
     echo -e "\033[1;31m[\033[1;36m0\033[1;31m] \033[1;33mRETURN"

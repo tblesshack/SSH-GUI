@@ -22,7 +22,7 @@ else
 system=$(cat /etc/issue.net)
 echo -e "\033[1;31m• \033[1;32mOPERATING SYSTEM\033[1;31m •\033[0m"
 echo ""
-echo -e "\033[1;33mNome: \033[1;37m$system"
+echo -e "\033[1;33mName: \033[1;37m$system"
 echo ""
 fi
 
