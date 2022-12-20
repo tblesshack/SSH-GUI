@@ -57,11 +57,11 @@ while [[ $# > 0 ]];do
         ;;
         -k|--keep)
         INSTALL_WAY=1
-        colorEcho ${BLUE} "mantenha a configuração para atualizar\n"
+        colorEcho ${BLUE} "keep setting to update\n"
         ;;
         --zh)
         CHINESE=1
-        colorEcho ${BLUE} "Instale a versão chinesa..\n"
+        colorEcho ${BLUE} "Install Chinese version..\n"
         ;;
         *)
                 # opção desconhecida
@@ -73,10 +73,10 @@ feito
 
 help(){
     echo "bash v2ray.sh [-h|--help] [-k|--keep] [--remove]"
-    echo "  -h, --help           Mostre ajuda"
-    echo "  -k, --keep           mantenha o config.json para atualizar"
-    echo "      --remove         remover v2ray, xray && multi-v2ray"
-    echo "                       sem parâmetros para nova instalação"
+    echo "  -h, --help           Show help"
+    echo "  -k, --keep           keep config.json to update"
+    echo "      --remove         remove v2ray, xray && multi-v2ray"
+    echo "                       no parameters for new installation"
     return 0
 }
 
@@ -119,7 +119,7 @@ removeV2Ray() {
     sed -i '/xray/d' ~/$ENV_FILE
     source ~/$ENV_FILE
 
-    colorEcho ${GREEN} "sucesso de desinstalação!"
+    colorEcho ${GREEN} "successful uninstallation!"
 }
 
 closeSELinux() {
@@ -141,7 +141,7 @@ checkSys() {
     elif [[ `command -v yum` ]];then
         PACKAGE_MANAGER='yum'
     else
-        colorEcho $RED "Não suporta sistema operacional!"
+        colorEcho $RED "Does not support operating system!"
         exit 1
     fi
 }
@@ -189,7 +189,7 @@ updateProject() {
         source /usr/share/bash-completion/completions/v2ray
         source /usr/share/bash-completion/completions/xray
     fi
-    
+
     #Instale o programa principal V2ray
     [[ ${INSTALL_WAY} == 0 ]] && bash <(curl -L -s https://multi.netlify.app/go.sh)
 }
@@ -204,9 +204,9 @@ timeSync() {
             chronyc -a makestep
         fi
 
-        if [[ $? -eq 0 ]];then 
-            echo -e "${OK} Sucesso de sincronização de tempo ${Font}"
-            echo -e "${OK} agora: `date -R`${Font}"
+        if [[ $? -eq 0 ]];then
+            echo -e "${OK} Time sync success ${Font}"
+            echo -e "${OK} Now: `date -R`${Font}"
         fi
     fi
 }
@@ -230,12 +230,12 @@ installFinish() {
     cd ${BEGIN_PATH}
 
     [[ ${INSTALL_WAY} == 0 ]] && WAY="install" || WAY="update"
-    colorEcho  ${GREEN} "multi-v2ray ${WAY} sucesso!\n"
+    colorEcho  ${GREEN} "multi-v2ray ${WAY} SUCCESS!\n"
 
     if [[ ${INSTALL_WAY} == 0 ]]; then
         clear
 
-        echo -e "\n\033[1;32mV2RAY INSTALADO COM SUCESSO !\033[0m"
+        echo -e "\n\033[1;32mV2RAY INSTALLED SUCCESSFULLY !\033[0m"
         v2ray info
 
         echo -e "Por favor insira o comando 'v2ray' para gerenciar v2ray\n"

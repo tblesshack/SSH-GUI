@@ -421,7 +421,7 @@ msg17='\033[1;37m\033[1;33m(No Information - To Cancel Type CRTL + C)\033[1;31m'
     fi
     unset PID_GEN
     PID_GEN=$(ps x|grep -v grep|grep "limv2ray")
-    [[ ! $PID_GEN ]] && PID_GEN="\e[91m [ DISABLED ] " || PID_GEN="\e[92m [ ATIVADO ] "
+    [[ ! $PID_GEN ]] && PID_GEN="\e[91m [ DISABLED ] " || PID_GEN="\e[92m [ ACTIVE ] "
     statgen="$(echo $PID_GEN)"
     clear
     clear
@@ -450,7 +450,7 @@ msg17='\033[1;37m\033[1;33m(No Information - To Cancel Type CRTL + C)\033[1;31m'
     }
 
     PID_GEN=$(ps x|grep -v grep|grep "limv2ray")
-    [[ ! $PID_GEN ]] && PID_GEN="\e[91m [ DISABLED ] " || PID_GEN="\e[92m [ ATIVADO ] "
+    [[ ! $PID_GEN ]] && PID_GEN="\e[91m [ DISABLED ] " || PID_GEN="\e[92m [ ACTIVE ] "
     statgen="$(echo $PID_GEN)"
     #SPR &
     echo -e "\033[0;34m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
