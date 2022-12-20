@@ -2036,7 +2036,7 @@ exit 0' >$RCLOCAL
 			[[ ! -e '/home/sshplus' ]] && exit 0
 			clear
 			echo -e "\E[44;1;37m                CONNECTION MODE                 \E[0m\n"
-			echo -e "\033[1;32mSERVIC: \033[1;33mOPENSSH \033[1;32mPORT: \033[1;37m$(grep 'Port' /etc/ssh/sshd_config | cut -d' ' -f2 | grep -v 'no' | xargs)" && sts6="\033[1;32m◉ "
+			echo -e "\033[1;32mSERVICE: \033[1;33mOPENSSH \033[1;32mPORT: \033[1;37m$(grep 'Port' /etc/ssh/sshd_config | cut -d' ' -f2 | grep -v 'no' | xargs)" && sts6="\033[1;32m◉ "
 			[[ "$(netstat -tlpn | grep 'docker' | wc -l)" != '0' ]] && {
 				echo -e "\033[1;32mSERVICE: \033[1;33mCHISEL: \033[1;32mPORT: \033[1;37m$(netstat -nplt | grep 'docker' | awk {'print $4'} | cut -d: -f2 | xargs)"
 				sts8="\033[1;32m◉ "
