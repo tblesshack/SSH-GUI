@@ -109,7 +109,7 @@ msg17='\033[1;37m\033[1;33m(No Information - To Cancel Type CRTL + C)\033[1;31m'
     clear
     echo -e "\E[44;1;37m            ADD USER | UUID V2RAY             \E[0m"
     ##DIAS
-    valid=$(date '+%C%y-%m-%d' -d " +31 days")
+    valid=$(date '+%C%y-%m-%d' -d " +31 Days")
     ##CORREO
     MAILITO=$(cat /dev/urandom | tr -dc '[:alnum:]' | head -c 10)
     ##ADDUSERV2RAY
@@ -135,7 +135,7 @@ msg17='\033[1;37m\033[1;33m(No Information - To Cancel Type CRTL + C)\033[1;31m'
     done
     echo -e "\e[91m >> Add UUID: \e[92m$UUID "
     while true; do
-         echo -ne "\e[91m >> UUID Duration (Dias):\033[1;92m " && read diasuser
+         echo -ne "\e[91m >> UUID Duration (Days):\033[1;92m " && read diasuser
          if [[ -z "$diasuser" ]]; then
          echo -e "$msg17" && continue
          elif [[ "$diasuser" != +([0-9]) ]]; then
@@ -229,7 +229,7 @@ msg17='\033[1;37m\033[1;33m(No Information - To Cancel Type CRTL + C)\033[1;31m'
     DateExp="$(cat /etc/SSHPlus/RegV2ray|grep -w "$hostreturn"|cut -d'|' -f3)"
     if [[ ! -z $DateExp ]]; then
     DataSec=$(date +%s --date="$DateExp")
-    [[ "$VPSsec" -gt "$DataSec" ]] && EXPTIME="\e[91m[EXPIRADO]\e[97m" || EXPTIME="\e[92m[$(($(($DataSec - $VPSsec)) / 86400))]\e[97m Dias"
+    [[ "$VPSsec" -gt "$DataSec" ]] && EXPTIME="\e[91m[EXPIRES\e[97m" || EXPTIME="\e[92m[$(($(($DataSec - $VPSsec)) / 86400))]\e[97m Days"
     else
     EXPTIME="\e[91m[ S/R ]"
     fi
