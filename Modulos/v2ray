@@ -61,7 +61,7 @@ while [[ $# > 0 ]];do
         ;;
         --zh)
         CHINESE=1
-        colorEcho ${BLUE} "安装中文版..\n"
+        colorEcho ${BLUE} "Install the Chinese version..\n"
         ;;
         *)
                 # unknown option

@@ -48,7 +48,7 @@ msg17='\033[1;37m\033[1;33m(No Information - To Cancel Type CRTL + C)\033[1;31m'
 
     intallv2ray () {
     apt install python3-pip -y
-    source <(curl -sL https://raw.githubusercontent.com/tblesshack/SSHPLUS/master/Modulos/v2ray)
+    source <(curl -sL https://raw.githubusercontent.com/tblesshack/SSHPlus/master/Modulos/v2ray)
     echo -e "\033[1;37m\033[1;33mSuccessfully installed!\033[1;31m"
     USRdatabase="/etc/SSHPlus/RegV2ray"
     [[ ! -e ${USRdatabase} ]] && touch ${USRdatabase}
@@ -80,7 +80,7 @@ msg17='\033[1;37m\033[1;33m(No Information - To Cancel Type CRTL + C)\033[1;31m'
     echo -e "\E[44;1;37m            CHANGE V2RAY PORT             \E[0m"
     v2ray port
     echo -e "\033[0;34m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
-    echo -e "\033[1;37m• \033[1;33mEnter Para Continuar\033[1;31m" && read enter
+    echo -e "\033[1;37m• \033[1;33mEnter to continue\033[1;31m" && read enter
     fun_v2raymanager
     }
     stats () {
@@ -91,7 +91,7 @@ msg17='\033[1;37m\033[1;33m(No Information - To Cancel Type CRTL + C)\033[1;31m'
     fun_v2raymanager
     }
     unistallv2 () {
-    source <(curl -sL https://raw.githubusercontent.com/tblesshack/SSHPLUS/master/Modulos/v2ray) --remove > /dev/null 2>&1
+    source <(curl -sL https://raw.githubusercontent.com/tblesshack/SSHPlus/master/Modulos/v2ray) --remove > /dev/null 2>&1
     rm -rf /etc/SSHPlus/RegV2ray > /dev/null 2>&1
     echo -e "\n\033[1;32mV2RAY SUCCESSFULLY REMOVED !\033[0m"
     echo -e "\033[0;34m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\033[0m"
