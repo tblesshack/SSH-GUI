@@ -52,16 +52,38 @@ fun_badvpn() {
                 }
                 sleep 1
             }
-            inst_udp () {
-                [[ -e "/bin/badvpn-udpgw" ]] && {
-                    sleep 0.1
-                } || {
-                    cd $HOME
-                    wget https://raw.githubusercontent.com/tblesshack/SSHPlus/master/badvpn-udpgw -o /dev/null
-                    mv -f $HOME/badvpn-udpgw /bin/badvpn-udpgw
-                    chmod 777 /bin/badvpn-udpgw
-                }
-            }
+inst_udp() {
+    if [[ -e "/bin/badvpn-udpgw" ]]; then
+        echo "BadVPN is already installed."
+    else
+        echo "Installing BadVPN..."
+        cd $HOME
+        
+        # Check system architecture
+        arch=$(uname -m)
+        
+        if [[ "$arch" == "x86_64" ]]; then
+            echo "Detected x86_64 architecture"
+            wget https://raw.githubusercontent.com/tblesshack/SSHPlus/master/badvpn-udpgw-x64 -O badvpn-udpgw
+        elif [[ "$arch" == "aarch64" ]]; then
+            echo "Detected ARM64 architecture"
+            wget https://raw.githubusercontent.com/tblesshack/SSHPlus/master/badvpn-udpgw-arm64 -O badvpn-udpgw
+        else
+            echo "Unsupported architecture: $arch"
+            return 1
+        fi
+
+        if [[ -f "badvpn-udpgw" ]]; then
+            mv -f $HOME/badvpn-udpgw /bin/badvpn-udpgw
+            chmod 777 /bin/badvpn-udpgw
+            echo "BadVPN installed successfully"
+            echo "Permissions set to 777"
+        else
+            echo "Failed to download BadVPN"
+            return 1
+        fi
+    fi
+}
             echo ""
             inst_udp
             fun_udpon

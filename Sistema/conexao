@@ -1,6 +1,6 @@
 #!/bin/bash
 #====================================================
-#	@TheMentalistSay
+#	@tblesshack
 #====================================================
 cor1='\033[41;1;37m'
 cor2='\033[44;1;37m'
@@ -8,7 +8,7 @@ scor='\033[0m'
 GREEN='\033[1;32m'
 YELLOW='\033[1;33m'
 SCOLOR='\033[0m'
-[[ $(awk -F" " '{print $2}' /usr/lib/licence) == "@TheMentalistSay" ]] && {
+[[ $(awk -F" " '{print $2}' /usr/lib/licence) == "@tblesshack" ]] && {
 	ram1=$(free -h | grep -i mem | awk {'print $2'})
 	ram2=$(free -h | grep -i mem | awk {'print $4'})
 	ram3=$(free -h | grep -i mem | awk {'print $3'})
@@ -688,6 +688,7 @@ SCOLOR='\033[0m'
 					rm -rf /etc/stunnel/stunnel.conf
 					rm -rf /etc/default/stunnel4
 					rm -rf /etc/stunnel/stunnel.pem
+					kill -9 $(lsof -t -i:443)
 				}
 				echo ""
 				fun_bar 'del_ssl'

@@ -26,7 +26,7 @@ done
 echo -e "\033[1;33m]\033[1;37m -\033[1;32m OK !\033[1;37m"
 tput cnorm
 }
-[[ $(awk -F" " '{print $2}' /usr/lib/licence) != "@TheMentalistSay" ]] && exit 0
+[[ $(awk -F" " '{print $2}' /usr/lib/licence) != "@tblesshack" ]] && exit 0
 fun_udp1 () {
     [[ -e "/bin/badvpn-udpgw" ]] && {
     clear
@@ -48,12 +48,25 @@ fun_udp1 () {
     } || {
         clear
         echo -e "\033[1;32mINSTALLING BADVPN !\033[0m\n"
-	    inst_udp () {
-	        cd $HOME
-            wget https://raw.githubusercontent.com/tblesshack/SSHPlus/master/badvpn-udpgw -o /dev/null
-            mv -f $HOME/badvpn-udpgw /bin/badvpn-udpgw
-            chmod 777 /bin/badvpn-udpgw
-	   }
+inst_udp () {
+    cd $HOME
+    arch=$(uname -m)
+    
+    if [[ "$arch" == "x86_64" ]]; then
+        echo "Detected x86_64 architecture"
+        wget https://raw.githubusercontent.com/tblesshack/SSHPlus/master/badvpn-udpgw-x64 -o /dev/null
+        mv -f $HOME/badvpn-udpgw-x64 /bin/badvpn-udpgw
+    elif [[ "$arch" == "aarch64" ]]; then
+        echo "Detected ARM64 architecture"
+        wget https://raw.githubusercontent.com/tblesshack/SSHPlus/master/badvpn-udpgw-arm64 -o /dev/null
+        mv -f $HOME/badvpn-udpgw-arm64 /bin/badvpn-udpgw
+    else
+        echo "Unsupported architecture: $arch"
+        return 1
+    fi
+    
+    chmod 777 /bin/badvpn-udpgw
+}
 	   fun_bar 'inst_udp'
 	   echo -e "\n\033[1;32mSTARTING BADVPN... \033[0m\n"
        fun_udpon2 () {
